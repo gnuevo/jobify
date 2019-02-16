@@ -1,0 +1,32 @@
+{
+
+  "manifest_version": 2,
+  "name": "jobify",
+  "version": "1.0",
+
+  "description": "Adiciona un borde rojo a todas las paginas que calcen con mozilla.org.",
+
+  "icons": {
+    "48": "icons/iconfinder_check-circle-outline-blank_326565.png"
+  },
+
+  "permissions": [
+    "activeTab",
+    "tabs"
+  ],
+
+  "content_scripts": [
+    {
+    "matches": ["https://www.glassdoor.com/*"],
+    "js": ["jquery.min.js"]
+  }],
+
+  "browser_action": {
+      "default_icon": "icons/iconfinder_check-circle-outline-blank_326565.png"
+    },
+
+  "background": {
+      "scripts": ["background.js"]
+    }
+
+}

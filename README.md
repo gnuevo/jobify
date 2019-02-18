@@ -11,16 +11,19 @@ What it does so far
 -------------------
 
 Currently it only scrapes job info when you're surfing job offers in [glassdoor](https://www.glassdoor.com/index.htm).
-Everytime you check a new job offer, the info is displayed as a `log()` in the console.
+When you install the extension, it loads a sidebar where info about the job will be displayed.
+
+![Demo gif](https://raw.githubusercontent.com/gnuevo/jobify/master/img/jobify.gif)
 
 TODO
 ----
 
 Many things:
 
-+ Store information about the jobs in a DB (probably LocalStorage or MongoDB).
-+ Add a sidebar or button to the page so I can click `I'm applying` and actualise the info in the DB.
-+ Extend functionality to other sites (LinkedIn, etc.)
++ [x] Display job information in sidebar.
++ [ ] Store information about the jobs in a DB (probably LocalStorage or MongoDB).
++ [ ] Add a sidebar or button to the page so I can click `I'm applying` and actualise the info in the DB.
++ [ ] Extend functionality to other sites (LinkedIn, etc.)
 
 Installation
 ------------

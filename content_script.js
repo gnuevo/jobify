@@ -26,6 +26,14 @@ $(document).ready(function() {
               how: "text"
             }});
         console.log("Scraped:", info);
+
+      browser.runtime.sendMessage({
+        info
+      }).then(function(message) {
+        console.log("Response", message);
+      }, function(e) {
+        console.log("Error", e);
+      });
     });
 
     // launch the mutationObserver on a div that never changes

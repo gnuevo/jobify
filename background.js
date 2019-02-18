@@ -32,3 +32,13 @@ function clickListener(tab) {
 }
 
 browser.browserAction.onClicked.addListener(clickListener);
+
+
+// message stuff
+// function handleMessage(request, sender, sendResponse) {
+//   console.log("Message from the content script: " +
+//     request.info.title);
+//   sendResponse({response: "Response from background script"});
+// }
+//
+// browser.runtime.onMessage.addListener(handleMessage);

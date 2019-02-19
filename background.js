@@ -23,6 +23,7 @@ console.log("background.js");
 
 function clickListener(tab) {
     console.log("Pulsado");
+    browser.sidebarAction.open();
     browser.tabs.executeScript(null, {
         file: "./content_script.js"
     }).then((obj) => {

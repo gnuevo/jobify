@@ -24,7 +24,8 @@
   "sidebar_action": {
   "default_title": "My sidebar",
   "default_panel": "sidebar/sidebar.html",
-  "default_icon": "icons/iconfinder_check-circle-outline-blank_326565.png"
+  "default_icon": "icons/iconfinder_check-circle-outline-blank_326565.png",
+  "open_at_install": false
 },
 
   "browser_action": {

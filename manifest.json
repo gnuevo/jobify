@@ -7,7 +7,7 @@
   "description": "Adiciona un borde rojo a todas las paginas que calcen con mozilla.org.",
 
   "icons": {
-    "48": "icons/iconfinder_check-circle-outline-blank_326565.png"
+    "48": "icons/iconfinder_black-tie_1608578.png"
   },
 
   "permissions": [
@@ -24,12 +24,12 @@
   "sidebar_action": {
   "default_title": "My sidebar",
   "default_panel": "sidebar/sidebar.html",
-  "default_icon": "icons/iconfinder_check-circle-outline-blank_326565.png",
+  "default_icon": "icons/iconfinder_black-tie_1608578.png",
   "open_at_install": false
 },
 
   "browser_action": {
-      "default_icon": "icons/iconfinder_check-circle-outline-blank_326565.png"
+      "default_icon": "icons/iconfinder_black-tie_1608578.png"
     },
 
   "background": {

@@ -74,3 +74,62 @@ render(h) {
 ```
 
 Now we can indeed call any method from the child component with the reference `childComponent`.
+
+How to send messages back to parent
+-----------------------------------
+
+To communicate from child to parent we have to make use of Vue events.
+
+From the child component we need to call the `$emit(event_name, data)` function.
+That will sen an event to the parent element.
+See a tutorial [here](https://vuejs.org/v2/guide/components-custom-events.html).
+
+```html
+<!-- inside child -->
+<button @click="this.$emit(event_name, data)"></button>
+```
+
+Now we need to capture that event from the parent element.
+Normally we would capture it using the `v-on` directive.
+
+```html
+<child v-on:event_name="handler"></child>
+```
+
+In our case, as we make use of the render function, things are a bit different.
+We cannot use the `v-on` directive with the render function `h`.
+So we need to make use of the data object that `h` provides us.
+To see the full syntax of this object see [here](https://es-vuejs.github.io/vuejs.org/v2/guide/render-function.html#El-objeto-de-datos-en-profundidad).
+We make use of the `on` property.
+
+```JavaScript
+h('app', {
+  on: {
+    mymsg: this.onchildevent
+  }
+});
+```
+Now, when the `mymsg` event is triggered, the parent will handle it using the method `onchildevent`.
+Here is the full example.
+
+```javascript
+var app = new Vue({
+    el: ...,
+    components: {
+        App
+    },
+    data: {
+      ...
+    },
+    render(h) {
+        return h('app', {ref: "childComponent", on: {mymsg: this.onchildevent}});
+    },
+
+    methods: {
+      onchildevent: function(info) {
+        console.log("onChildEvent");
+        console.log(info);
+      }
+    }
+});
+```

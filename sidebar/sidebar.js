@@ -19,7 +19,14 @@ var app = new Vue({
       place: "def place"
     },
     render(h) {
-        return h('app', {ref: "childComponent"});
+        return h('app', {ref: "childComponent", on: {mymsg: this.onchildevent}});
+    },
+
+    methods: {
+      onchildevent: function(info) {
+        console.log("onChildEvent");
+        console.log(info);
+      }
     }
 });
 

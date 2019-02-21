@@ -13,6 +13,10 @@ $(document).ready(function() {
         console.log($('#HeroHeaderModule h1').text());
 
         var info = scrapeIt.scrapeHTML($, {
+            jobId: {
+              selector: "#JDWrapper article.jobDetails",
+              attr: "data-id"
+            },
             title: {
                 selector: "#JDWrapper h1",
                 how: "text"

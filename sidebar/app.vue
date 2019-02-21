@@ -1,14 +1,26 @@
 <template>
     <div>
-        <ul class="tab-list">
-            <li class="tab-item" v-for="tab in tabs">{{ tab }}</li>
+        <ul class="list-group">
+            <li class="list-group-item">
+                <p style="font-size:1.5em;">{{ title }}</p>
+                <p>{{ compInfo }}</p>
+            </li>
+            <li class="list-group-item">
+                <button type="button" class="btn btn-primary" @click="action('clicked');">Save Job</button>
+            </li>
+            <li class="list-group-item">
+                <p>
+                    <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#jobDescription" aria-expanded="false" aria-controls="collapseExample">
+                        Description
+                    </button>
+                </p>
+                <div class="collapse" id="jobDescription">
+                    <div class="card card-body">
+                        {{ description }}
+                    </div>
+                </div>
+            </li>
         </ul>
-        <button @click="getTabs()" class="button">Get tabs!</button>
-          <ul class="list-group" id="my-app">
-    <li class="list-group-item">Title: {{ title }}</li>
-    <li class="list-group-item">Place: {{ compInfo }}</li>
-    <li class="list-group-item">Description: {{ description }}</li>
-  </ul>
     </div>
 </template>
 <script>
@@ -39,6 +51,10 @@
                 this.title = job.title;
                 this.compInfo = job.compInfo;
                 this.description = job.description;
+            },
+            action(actionType) {
+                this.$emit('mymsg', { data: "empty"});
+                console.log("Sent $emit");
             }
         }
     }

@@ -33,14 +33,11 @@
   </nav>
 
 <div class="container">
-  <div class="row my-2">
-    <button type="button" class="btn btn-primary">Primary</button>
-  </div>
 
 </div>
 
 <div id="my-app">
-  <app :title="title"></app>
+  <app ref="childComponent" v-on:child-msg="onchildevent">This is the app element</app>
   <ul class="list-group">
     <li class="list-group-item">Title:</li>
     <li class="list-group-item">Place</li>

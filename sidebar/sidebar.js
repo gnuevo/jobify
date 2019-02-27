@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import App from './app.vue';
 
+
 console.log("I'm sidebar!!");
 
 var job = {
@@ -33,8 +34,7 @@ var app = new Vue({
 
 // message stuff
 function handleMessage(request, sender, sendResponse) {
-  console.log("Message from the content script: " +
-    request.info.title);
+  console.log("Message from the content script: " + request.info.title);
     app.$refs.childComponent.setJob(request.info);
 
   sendResponse({response: "Response from background script"});

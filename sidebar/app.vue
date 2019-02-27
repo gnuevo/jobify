@@ -2,11 +2,12 @@
     <div>
         <ul class="list-group">
             <li class="list-group-item">
+                <span class="badge badge-secondary">{{ platform }}</span>
                 <p style="font-size:1.5em;">{{ title }}</p>
                 <p>{{ compInfo }}</p>
             </li>
             <li class="list-group-item">
-                <button type="button" class="btn btn-primary" @click="action('clicked');">Save Job</button>
+                <button type="button" class="btn btn-primary" @click="action('save-job');">Save Job</button>
             </li>
             <li class="list-group-item">
                 <p>
@@ -30,6 +31,7 @@
         data() {
             return {
                 tabs: [],
+                job: {}
             }
         },
         methods: {
@@ -48,12 +50,14 @@
             },
             setJob(job) {
                 console.log("Actualising job");
+                this.job = job;
                 this.title = job.title;
-                this.compInfo = job.compInfo;
+                this.compInfo = job.company;
                 this.description = job.description;
+                this.platform = job.platform;
             },
             action(actionType) {
-                this.$emit('mymsg', { data: "empty"});
+                this.$emit('mymsg', { command: actionType, job: this.job});
                 console.log("Sent $emit");
             }
         }

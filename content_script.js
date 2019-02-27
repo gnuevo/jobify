@@ -13,22 +13,32 @@ $(document).ready(function() {
         console.log($('#HeroHeaderModule h1').text());
 
         var info = scrapeIt.scrapeHTML($, {
-            jobId: {
+            id: {
               selector: "#JDWrapper article.jobDetails",
               attr: "data-id"
+            },
+            platform: {
+              selector: "#JDWrapper",
+              convert: x => "glassdoor"
+            },
+            jobUrl: {
+              selector: "li.jl.selected a.jobLink",
+              attr: "href",
+              convert: x => `https://www.glassdoor.com${x}`
             },
             title: {
                 selector: "#JDWrapper h1",
                 how: "text"
               },
-            compInfo: {
+            company: {
               selector: "#JDWrapper div.compInfo",
               how: "text"
             },
             description: {
               selector: "#JobDescriptionContainer",
               how: "text"
-            }});
+            }
+          });
         console.log("Scraped:", info);
 
       browser.runtime.sendMessage({

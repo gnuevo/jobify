@@ -4,20 +4,23 @@
   "description": "",
   "main": "background.js",
   "scripts": {
-    "build": "npx webpack",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npx webpack --display-error-details",
+    "test": "mocha *.test.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "mongodb": "^3.1.13",
     "mongoose": "^5.4.14",
-    "scrape-it": "^5.1.4"
+    "scrape-it": "^5.1.4",
+    "superagent": "^4.1.0"
   },
   "devDependencies": {
     "copy-webpack-plugin": "^4.6.0",
     "css-loader": "^2.1.0",
+    "expect": "^24.1.0",
     "laravel-mix": "^4.0.14",
+    "mocha": "^6.0.2",
     "vue": "^2.6.6",
     "vue-loader": "^15.6.2",
     "vue-style-loader": "^4.1.2",

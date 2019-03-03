@@ -12,7 +12,9 @@
 
   "permissions": [
     "activeTab",
-    "tabs"
+    "tabs",
+    "https://127.0.0.1/*",
+    "https://localhost/*"
   ],
 
   "content_scripts": [
@@ -36,5 +38,5 @@
       "scripts": ["background.js"]
     },
 
-    "content_security_policy": "script-src 'self' https://cdn.jsdelivr.net https://code.jquery.com https://cdnjs.cloudflare.com/ https://stackpath.bootstrapcdn.com; object-src 'self';"
+    "content_security_policy": "script-src 'self' https://cdn.jsdelivr.net https://code.jquery.com https://cdnjs.cloudflare.com/ https://stackpath.bootstrapcdn.com https://127.0.0.1:3000/*; object-src 'self' https://127.0.0.1:3000/*;"
 }

@@ -73,6 +73,25 @@ render(h) {
 }
 ```
 
+The only part missing now is to create some `props` the Vue element is going to track.
+
+```JavaScript
+props: ['title', 'compInfo', 'description', 'saved']
+```
+
+If any of the variables described in the `props` changes, it triggers the re-render of the element.
+So we can control the information that is displayed.
+To change a `prop` we make use of the keyword `this` from one of the methods.
+For example
+
+```JavaScript
+methods: {
+  actualiseTitle(new_title) {
+    this.title = new_title; // this will trigger the rendering of the new info
+  }
+}
+```
+
 Now we can indeed call any method from the child component with the reference `childComponent`.
 
 How to send messages back to parent

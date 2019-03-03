@@ -3,6 +3,8 @@
         <ul class="list-group">
             <li class="list-group-item">
                 <span class="badge badge-secondary">{{ platform }}</span>
+                <span class="badge badge-success" v-if="saved">Saved</span>
+                <span class="badge badge-secondary" v-else>Not saved</span>
                 <p style="font-size:1.5em;">{{ title }}</p>
                 <p>{{ compInfo }}</p>
             </li>
@@ -27,11 +29,12 @@
 <script>
     export default {
         name: 'app',
-        props: ['title', 'compInfo', 'description'],
+        props: ['title', 'compInfo', 'description', 'saved'],
         data() {
             return {
                 tabs: [],
-                job: {}
+                job: {},
+                meta: {}
             }
         },
         methods: {
@@ -55,6 +58,11 @@
                 this.compInfo = job.company;
                 this.description = job.description;
                 this.platform = job.platform;
+            },
+            setMetadata(meta) {
+                console.log("VUE: Setting metadata");
+                this.saved = true;
+                this.meta = meta;
             },
             action(actionType) {
                 this.$emit('mymsg', { command: actionType, job: this.job});

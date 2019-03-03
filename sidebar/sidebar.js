@@ -1,5 +1,9 @@
 import Vue from 'vue';
 import App from './app.vue';
+const request = require('superagent');
+const localhost = "http://localhost"
+const port = 3000;
+const remote_address = localhost + ':' + port;
 
 
 console.log("I'm sidebar!!");
@@ -26,7 +30,26 @@ var app = new Vue({
     methods: {
       onchildevent: function(info) {
         console.log("onChildEvent");
-        console.log(info);
+        var command = info.command;
+        switch (command) {
+          case 'save-job':
+            // save the job
+            console.log("Saving the job", info.job);
+            request
+            .post(remote_address + '/jobs')
+            .send(info.job)
+            .then(res => {
+              console.log("Response from server", res);
+              console.log(res.body);
+              app.$refs.childComponent.setMetadata({ saved: true });
+            })
+            .catch(err => {
+              console.log("Error trying to save job", err);
+            });
+        break;
+          default:
+            console.log("Default command", command);
+        }
       }
     }
 });
@@ -34,7 +57,17 @@ var app = new Vue({
 
 // message stuff
 function handleMessage(request, sender, sendResponse) {
-  console.log("Message from the content script: " + request.info.title);
+    // request
+    // .post(remote_address + '/jobs/' + request.info.id)
+    // .then(res => {
+    //   console.log("Response from server", res);
+    //   if (res.status == 200) {
+    //     app.$refs.childComponent.setMetadata({ saved: true });
+    //   }
+    // })
+    // .catch(err => {
+    //   console.log("Error trying to save job", err);
+    // });
     app.$refs.childComponent.setJob(request.info);
 
   sendResponse({response: "Response from background script"});

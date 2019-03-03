@@ -3,7 +3,7 @@
         <ul class="list-group">
             <li class="list-group-item">
                 <span class="badge badge-secondary">{{ platform }}</span>
-                <span class="badge badge-success" v-if="saved">Saved</span>
+                <span class="badge badge-success" v-if="saved == true">Saved</span>
                 <span class="badge badge-secondary" v-else>Not saved</span>
                 <p style="font-size:1.5em;">{{ title }}</p>
                 <p>{{ compInfo }}</p>
@@ -60,8 +60,8 @@
                 this.platform = job.platform;
             },
             setMetadata(meta) {
-                console.log("VUE: Setting metadata");
-                this.saved = true;
+                console.log("VUE: Setting metadata", meta);
+                this.saved = meta.saved;
                 this.meta = meta;
             },
             action(actionType) {

@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import App from './app.vue';
-const request = require('superagent');
+const superagent = require('superagent');
 const localhost = "http://localhost"
 const port = 3000;
 const remote_address = localhost + ':' + port;
@@ -35,7 +35,7 @@ var app = new Vue({
           case 'save-job':
             // save the job
             console.log("Saving the job", info.job);
-            request
+            superagent
             .post(remote_address + '/jobs')
             .send(info.job)
             .then(res => {
@@ -57,18 +57,19 @@ var app = new Vue({
 
 // message stuff
 function handleMessage(request, sender, sendResponse) {
-    // request
-    // .post(remote_address + '/jobs/' + request.info.id)
-    // .then(res => {
-    //   console.log("Response from server", res);
-    //   if (res.status == 200) {
-    //     app.$refs.childComponent.setMetadata({ saved: true });
-    //   }
-    // })
-    // .catch(err => {
-    //   console.log("Error trying to save job", err);
-    // });
+    superagent
+    .get(remote_address + '/jobs/' + request.info.id)
+    .then(res => {
+      console.log("Response from server", res);
+      if (res.status == 200) {
+        app.$refs.childComponent.setMetadata({ saved: true });
+      }
+    })
+    .catch(err => {
+      console.log("Error trying to save job", err);
+    });
     app.$refs.childComponent.setJob(request.info);
+    app.$refs.childComponent.setMetadata({ saved: false });
 
   sendResponse({response: "Response from background script"});
 }

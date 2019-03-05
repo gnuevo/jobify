@@ -8,7 +8,10 @@
                 <p style="font-size:1.5em;">{{ title }}</p>
                 <p>{{ compInfo }}</p>
             </li>
-            <li class="list-group-item">              
+            <li class="list-group-item">
+                <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#jobDescription" aria-expanded="false" aria-controls="collapseExample">
+                        Description
+                </button>         
                 <div class="btn-group" role="group" aria-label="Basic example">
                     <button type="button" class="btn btn-primary" v-if="saved == false" @click="action('save-job');">Save Job</button>
                     <button type="button" class="btn btn-success" v-else @click="action('save-job');" disabled>Saved</button>
@@ -18,11 +21,6 @@
                 </div>
             </li>
             <li class="list-group-item">
-                <p>
-                    <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#jobDescription" aria-expanded="false" aria-controls="collapseExample">
-                        Description
-                    </button>
-                </p>
                 <div class="collapse" id="jobDescription">
                     <div class="card card-body">
                         {{ description }}

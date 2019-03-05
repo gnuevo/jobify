@@ -19,6 +19,28 @@
                         <span style="fill:white;" class="btn-label"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="16" viewBox="0 0 12 16"><path fill-rule="evenodd" d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z"/></svg></span>
                     </button>
                 </div>
+                <button class="btn btn-warning" type="button" v-if="saved == true" data-toggle="collapse" data-target="#actionCollapse" aria-expanded="false" aria-controls="actionCollapse">
+                            New Action
+                        <span style="fill:black;" class="btn-label"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="16" viewBox="0 0 12 16"><path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"/></svg></span>
+                </button>
+                <div class="collapse" id="actionCollapse">
+                    <br></br>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Select the type of action</label>
+                        <select class="form-control" id="exampleFormControlSelect1">
+                            <option>Send application</option>
+                            <option>Send message</option>
+                            <option>Receive response</option>
+                            <option>Rejected</option>
+                        </select>
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Example textarea</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    </div>
+                    <button type="button" class="btn btn-primary float-right" data-toggle="collapse" data-target="#actionCollapse">Save</button>
+                </div>
             </li>
             <li class="list-group-item">
                 <div class="collapse" id="jobDescription">

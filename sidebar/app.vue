@@ -39,7 +39,7 @@
                         <label for="exampleFormControlTextarea1">Example textarea</label>
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                     </div>
-                    <button type="button" class="btn btn-primary float-right" data-toggle="collapse" data-target="#actionCollapse">Save</button>
+                    <button type="button" class="btn btn-primary float-right" data-toggle="collapse" data-target="#actionCollapse" @click="action('save-action');">Save</button>
                 </div>
             </li>
             <li class="list-group-item">
@@ -91,7 +91,17 @@
                 this.meta = meta;
             },
             action(actionType) {
-                this.$emit('mymsg', { command: actionType, job: this.job});
+                switch (actionType) {
+                    case 'save-job':
+                    case 'delete-job':
+                        this.$emit('mymsg', { command: actionType, job: this.job});
+                        break;
+                    case 'save-action':
+                        console.log("Saving action");
+                        break;
+                    default:
+                        break;
+                }
                 console.log("Sent $emit");
             }
         }

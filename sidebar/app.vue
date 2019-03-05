@@ -8,8 +8,14 @@
                 <p style="font-size:1.5em;">{{ title }}</p>
                 <p>{{ compInfo }}</p>
             </li>
-            <li class="list-group-item">
-                <button type="button" class="btn btn-primary" @click="action('save-job');">Save Job</button>
+            <li class="list-group-item">              
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-primary" v-if="saved == false" @click="action('save-job');">Save Job</button>
+                    <button type="button" class="btn btn-success" v-else @click="action('save-job');" disabled>Saved</button>
+                    <button type="button" v-if="saved == true" class="btn btn-success" @click="action('delete-job');">
+                        <span style="fill:white;" class="btn-label"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="16" viewBox="0 0 12 16"><path fill-rule="evenodd" d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z"/></svg></span>
+                    </button>
+                </div>
             </li>
             <li class="list-group-item">
                 <p>

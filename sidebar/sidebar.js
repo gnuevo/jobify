@@ -47,6 +47,18 @@ var app = new Vue({
               console.log("Error trying to save job", err);
             });
         break;
+          case 'delete-job':
+          console.log("Deleting job", info.job.id);
+          superagent
+          .delete(remote_address + '/jobs/' + info.job.id)
+          .then(res => {
+            console.log("Resopnse from server", res);
+            console.log(res.body);
+            app.$refs.childComponent.setMetadata({ saved: false });
+          })
+          .catch(err => {
+            console.log("Error trying to delete job");
+          });
           default:
             console.log("Default command", command);
         }

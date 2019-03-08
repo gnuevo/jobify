@@ -29,8 +29,8 @@ var app = new Vue({
 
     methods: {
       onchildevent: function(info) {
-        console.log("onChildEvent");
         var command = info.command;
+        console.log("onChildEvent", command);
         switch (command) {
           case 'save-job':
             // save the job
@@ -59,6 +59,20 @@ var app = new Vue({
           .catch(err => {
             console.log("Error trying to delete job");
           });
+          break;
+          case 'save-action':
+          console.log("Save new action");
+          var history = info.history;
+          superagent
+          .put(remote_address + '/jobs/' + info.jobid)
+          .send({ history: history })
+          .then(res => {
+            console.log("Resopnse from server", res);
+            console.log(res.body);
+          })
+          .catch(err => {
+            console.log("Error trying to delete job");
+          });
           default:
             console.log("Default command", command);
         }
@@ -72,9 +86,13 @@ function handleMessage(request, sender, sendResponse) {
     superagent
     .get(remote_address + '/jobs/' + request.info.id)
     .then(res => {
-      console.log("Response from server", res);
+      console.log("Response from server", res.status);
       if (res.status == 200) {
         app.$refs.childComponent.setMetadata({ saved: true });
+        var retrievedJob = res.body;
+        app.$refs.childComponent.actualiseJob({ history: retrievedJob.history });
+      } else {
+        app.$refs.childComponent.actualiseJob({ history: [] });
       }
     })
     .catch(err => {
